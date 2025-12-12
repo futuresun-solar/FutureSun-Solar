@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شمس المستقبل للطاقة الشمسية | Future Sun</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+    <style>
+        :root {
+            --blue: #0066cc;
+            --orange: #fbad18;
+            --green: #4ca944;
+            --dark: #2c3e50;
+            --light: #f9f9f9;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Cairo', sans-serif; background-color: #fff; color: var(--dark); line-height: 1.7; overflow-x: hidden; }
+        a { text-decoration: none; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* === الهيدر === */
+        header {
+            background-color: #fff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 10px 0;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        .navbar { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            min-height: 110px; 
+            flex-direction: row-reverse; 
+        }
+        
+        .logo { display: flex; align-items: center; gap: 15px; }
+        .logo img { height: 100px; width: auto; display: block; }
+
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { color: var(--dark); font-weight: 700; font-size: 1.15rem; position: relative; }
+        .nav-links a:hover, .nav-links a.active { color: var(--blue); }
+        
+        .btn-main {
+            background-color: var(--orange);
+            color: #fff !important;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(251, 173, 24, 0.4);
+        }
+        .btn-main:hover { background-color: #e69c00; transform: translateY(-3px); }
+
+        /* === 🛑 تنسيقات السلايدر الجديد (Slider Styles) === */
+        .hero-slider {
+            width: 100%;
+            height: 85vh; /* ارتفاع السلايدر */
+            position: relative;
+        }
+
+        .swiper-slide {
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        /* طبقة تعتيم فوق الصورة لتوضيح النص */
+        .overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 20, 50, 0.6); /* لون أزرق غامق شفاف */
+            z-index: 1;
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        /* تنسيقات النصوص داخل السلايدر */
+        .slide-content h1 { font-size: 3.5rem; font-weight: 900; line-height: 1.2; margin-bottom: 20px; opacity: 0; transform: translateY(30px); transition: 1s; }
+        .slide-content p { font-size: 1.4rem; margin-bottom: 30px; opacity: 0; transform: translateY(30px); transition: 1s 0.3s; }
+        .slide-btn { opacity: 0; transform: translateY(30px); transition: 1s 0.6s; display: inline-block; }
+
+        /* أنيميشن ظهور النص عندما تكون الشريحة نشطة */
+        .swiper-slide-active .slide-content h1,
+        .swiper-slide-active .slide-content p,
+        .swiper-slide-active .slide-btn {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 🛑 أشكال النصوص المختلفة */
+        .text-center { text-align: center; margin: 0 auto; }
+        .text-right { text-align: right; margin-right: 10%; } /* يمين */
+        .text-left { text-align: left; margin-left: 10%; direction: ltr; } /* يسار */
+        .text-left h1, .text-left p { text-align: left; }
+
+        /* أزرار التنقل (الأسهم) */
+        .swiper-button-next, .swiper-button-prev { color: var(--orange); background: rgba(255,255,255,0.1); width: 50px; height: 50px; border-radius: 50%; }
+        .swiper-button-next:hover, .swiper-button-prev:hover { background: #fff; }
+
+        /* === الموبايل === */
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; height: auto; padding: 20px; }
+            .nav-links { flex-direction: column; gap: 15px; margin-top: 20px; width: 100%; }
+            .logo img { height: 80px; }
+            .slide-content h1 { font-size: 2rem; }
+            .text-right, .text-left { text-align: center !important; margin: 0 auto !important; direction: rtl !important; }
+        }
+        
+        /* === باقي الأقسام === */
+        .about-section { padding: 80px 0; background: var(--light); text-align: center; }
+        .section-header h2 { color: var(--blue); font-size: 2.5rem; margin-bottom: 20px; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .feature-card { background: #fff; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .feature-card i { font-size: 3rem; color: var(--green); margin-bottom: 15px; }
+        
+        .numbers { background: var(--blue); padding: 60px 0; color: #fff; text-align: center; }
+        .numbers-grid { display: flex; justify-content: space-around; flex-wrap: wrap; }
+        .num-item h3 { font-size: 3rem; color: var(--orange); }
+        
+        footer { background: #151f28; color: #fff; padding: 50px 0; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="شمس المستقبل">
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" class="active">الرئيسية</a>
+                <a href="#about">من نحن</a>
+                <a href="projects.html">مشاريعنا</a>
+                <a href="contact.html" class="btn-main">اتصل بنا</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="swiper hero-slider">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=1920');">
+                <div class="overlay"></div>
+                <div class="slide-content text-center">
+                    <h1>شمس المستقبل <br> <span style="color:var(--orange)">طاقة لا تنتهي</span></h1>
+                    <p>الشريك الاستراتيجي الأول لمشاريع الطاقة الشمسية في مصر</p>
+                    <a href="#about" class="btn-main slide-btn">اكتشف المزيد</a>
+                </div>
+            </div>
+
+            <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=1920');">
+                <div class="overlay"></div>
+                <div class="container" style="width:100%"> <div class="slide-content text-right">
+                        <h1>طاقة شمسية <br> <span style="color:var(--green)">للري والزراعة</span></h1>
+                        <p>شغل آبار مزرعتك بأعلى كفاءة ووفر تكلفة الديزل للأبد</p>
+                        <a href="projects.html" class="btn-main slide-btn">سابقة الأعمال</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1613665813446-82a78c468a1d?q=80&w=1920');">
+                <div class="overlay"></div>
+                <div class="container" style="width:100%">
+                    <div class="slide-content text-left"> <h1>Solar For Factory and Home <br> <span style="color:var(--orange)">وفر فاتورتك</span></h1>
+                        <p>حول مصنعك , منزلك , لمحطة طاقـة ذكية. استثمار آمن وعائد مضمون</p>
+                        <a href="contact.html" class="btn-main slide-btn">اطلب معاينة</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1581094794329-cd1361ddee25?q=80&w=1920');">
+                <div class="overlay" style="background: rgba(0,0,0,0.7);"></div> <div class="slide-content text-center">
+                    <i class="fa-solid fa-screwdriver-wrench" style="font-size: 4rem; color:var(--orange); margin-bottom:20px;"></i>
+                    <h1>صيانة وتركيب <br> <span>بأيدي خبراء</span></h1>
+                    <p>فريقنا الهندسي معك في أي مكان لضمان استمرارية التشغيل.</p>
+                    <a href="contact.html" class="btn-main slide-btn">تواصل معنا</a>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>من نحن؟</h2>
+                <div class="line"></div>
+                <p style="max-width: 800px; margin: 20px auto; font-size: 1.1rem; color: #555;">
+                    شمس المستقبل هي شركة مصرية رائدة بخبرة تمتد لسنوات في السوق المصري. 
+                    نقدم حلولاً هندسية متكاملة للطاقة الشمسية (للزراعة، الصناعة، والمنازل) في جميع أنحاء الجمهورية، 
+                    معتمدين على أحدث التكنولوجيا العالمية وأجود الخامات ,لتوفير طاقة نظيفة ومستدامة بأعلى عائد استثماري.
+                </p>
+            </div>
+            
+            <div class="features-grid">
+                
+                <div class="feature-card">
+                    <i class="fa-solid fa-eye"></i>
+                    <h3>رؤيتنا</h3>
+                    <p>أن نكون الخيار الأول للطاقة النظيفة في مصر، والمساهمة في توفير الكهرباء لكل مشروع ومنزل في أرض مصر.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fa-solid fa-bullseye"></i>
+                    <h3>رسالتنا</h3>
+                    <p>دعم عملائنا بتقليل تكاليف التشغيل، وتقديم أنظمة تعيش طويلاً بمكونات أصلية وخدمة تغطي كافة المحافظات.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fa-solid fa-list-check"></i>
+                    <h3>أهدافنا</h3>
+                    <p>تغطية كافة احتياجات السوق المصري، تقديم حلول اقتصادية تناسب الجميع، وبناء شراكات دائمة مبنية على الثقة.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="numbers">
+        <div class="container numbers-grid">
+            <div class="num-item"><h3>+8</h3><p>سنوات</p></div>
+            <div class="num-item"><h3>+600</h3><p>مشروع</p></div>
+            <div class="num-item"><h3>100%</h3><p>ضمان</p></div>
+        </div>
+    </section>
+
+<section class="cta-footer" style="background: linear-gradient(rgba(0, 102, 204, 0.9), rgba(0, 80, 180, 0.95)), url('images/projectbanner.jpg') center/cover fixed; color: #fff; text-align: center; padding: 80px 20px; position: relative; margin-top: 80px;">
+        <div class="cta-content">
+            <h2 style="font-size: 2.5rem; font-weight: 900; margin-bottom: 15px;">هل أنت مستعد لبدء مشروعك القادم؟</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;">انضم لقائمة شركاء النجاح واستفد من طاقة نظيفة ومستدامة.</p>
+            <a href="contact.html" style="background: #fbad18; color: #fff; padding: 15px 40px; border-radius: 50px; font-size: 1.2rem; font-weight: bold; display: inline-block; text-decoration: none;">اطلب معاينة الآن</a>
+        </div>
+    </section>
+
+    <footer style="background: #111; color: #777; padding: 20px 0; text-align: center; margin-top: 0;">
+        <p>© 2025 جميع الحقوق محفوظة لشركة شمس المستقبل.</p>
+    </footer>
+
+    <footer>
+        <div class="container">
+            <h3>شمس المستقبل للطاقة الشمسية</h3>
+            <p>&copy; 2025 جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('.hero-slider', {
+            loop: true,               // تكرار لا نهائي
+            effect: 'fade',           // تأثير الاختفاء والظهور (ناعم جداً)
+            fadeEffect: { crossFade: true },
+            autoplay: {
+                delay: 5000,          // الزمن: 5 ثواني لكل صورة
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+
+        // كود لوحة التحكم
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => { if (!user) { window.netlifyIdentity.on("login", () => { document.location.href = "/admin/"; }); } });
+        }
+    </script>
+
+</body>
+</html>
