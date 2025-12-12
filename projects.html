@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مشاريعنا | شمس المستقبل</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ================= أساسيات ================= */
+        :root { --blue: #0066cc; --orange: #fbad18; --dark: #333; --footer-bg: #1a252f; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Cairo', sans-serif; background-color: #f9f9f9; color: var(--dark); overflow-x: hidden; }
+        a { text-decoration: none; transition: 0.3s; }
+
+        /* ================= الهيدر ================= */
+        header { background: #fff; padding: 10px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; flex-direction: row-reverse; }
+        
+        .logo img { height: 90px; width: auto; }
+
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { color: var(--dark); font-weight: 700; font-size: 1.1rem; }
+        .nav-links a:hover, .nav-links a.active { color: var(--blue); }
+        .btn-main { background: var(--orange); color: #fff !important; padding: 10px 25px; border-radius: 50px; }
+
+        /* ================= البنر ================= */
+        .hero-banner { position: relative; height: 50vh; background-color: #222; overflow: hidden; display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; }
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('images/projectbanner.jpg') no-repeat center bottom/cover; opacity: 0.8; }
+        .hero-text { position: relative; z-index: 3; }
+        .hero-text h1 { font-size: 3rem; font-weight: 900; }
+
+        /* ================= قائمة المشاريع ================= */
+        .projects-list { max-width: 1100px; margin: 60px auto; padding: 0 20px; }
+        
+        .project-row {
+            display: flex; background: #fff; border-radius: 20px; overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 50px;
+            border: 1px solid #eee; align-items: center; transition: 0.3s;
+        }
+        .project-row:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+
+        .row-img { flex: 1; height: 350px; position: relative; cursor: pointer; overflow: hidden; }
+        .row-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .project-row:hover .row-img img { transform: scale(1.05); }
+
+        .row-text { flex: 1; padding: 40px; text-align: right; }
+        .row-text h3 { color: var(--blue); font-size: 1.8rem; margin-bottom: 15px; font-weight: 800; }
+        .row-text p { color: #555; font-size: 1.1rem; line-height: 1.8; margin-bottom: 25px; }
+        
+        .details-btn {
+            background: var(--orange); color: #fff; padding: 12px 30px; border-radius: 5px; 
+            font-weight: bold; cursor: pointer; border: none; font-family: 'Cairo';
+            display: inline-flex; align-items: center; gap: 10px; transition: 0.3s;
+        }
+        .details-btn:hover { background: #e69c00; }
+
+        /* ================= 🛑 الفوتر الجديد (الجملة التحفيزية) ================= */
+        .cta-footer {
+            background: linear-gradient(rgba(0, 102, 204, 0.9), rgba(0, 80, 180, 0.95)), url('images/projectbanner.jpg') center/cover fixed;
+            color: #fff; text-align: center; padding: 80px 20px; position: relative; margin-top: 80px;
+        }
+        .cta-content h2 { font-size: 2.5rem; font-weight: 900; margin-bottom: 15px; }
+        .cta-content p { font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9; max-width: 700px; margin-left: auto; margin-right: auto; }
+        
+        .cta-btn {
+            background: var(--orange); color: #fff; padding: 15px 40px; border-radius: 50px;
+            font-size: 1.2rem; font-weight: bold; display: inline-block; transition: 0.3s;
+            box-shadow: 0 5px 20px rgba(251, 173, 24, 0.4);
+        }
+        .cta-btn:hover { background: #fff; color: var(--blue); transform: translateY(-5px); }
+
+        /* الفوتر السفلي (الحقوق) */
+        .bottom-footer { background: #111; color: #777; padding: 20px 0; text-align: center; font-size: 0.9rem; }
+        .bottom-footer p { margin: 0; }
+
+
+        /* ================= النافذة المنبثقة (Modal) ================= */
+        .modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.95); overflow-y: auto; padding-top: 20px; }
+        .close-btn { position: fixed; top: 20px; right: 30px; color: #fff; font-size: 50px; font-weight: bold; cursor: pointer; z-index: 10000; line-height: 1; }
+        .close-btn:hover { color: var(--orange); }
+        .modal-content { max-width: 1000px; margin: 40px auto; padding: 20px; text-align: center; }
+        .modal-content h2 { color: #fff; margin-bottom: 30px; font-size: 2rem; border-bottom: 1px solid #444; padding-bottom: 15px; }
+        .modal-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
+        .modal-gallery img { width: 100%; height: 220px; object-fit: cover; border-radius: 8px; border: 2px solid #333; transition: 0.3s; }
+        .modal-gallery img:hover { transform: scale(1.05); border-color: var(--orange); z-index: 2; }
+        .video-container { grid-column: 1 / -1; width: 100%; height: 400px; margin-bottom: 20px; border-radius: 10px; overflow: hidden; border: 2px solid var(--orange); }
+        .video-container iframe { width: 100%; height: 100%; border: 0; }
+
+        @media (max-width: 768px) {
+            .container { flex-direction: column; }
+            .nav-links { flex-direction: column; margin-top: 15px; }
+            .project-row { flex-direction: column; }
+            .row-img { width: 100%; height: 250px; }
+            .row-text { width: 100%; padding: 25px; }
+            .video-container { height: 250px; }
+            .modal-gallery { grid-template-columns: repeat(2, 1fr); }
+            .cta-content h2 { font-size: 2rem; }
+        }
+    </style>
+
+    <script>
+        function openModal(id) { document.getElementById(id).style.display = "block"; document.body.style.overflow = "hidden"; }
+        function closeModal(id) { document.getElementById(id).style.display = "none"; document.body.style.overflow = "auto"; }
+    </script>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo"><img src="logo.png" alt="شمس المستقبل"></a>
+            <nav class="nav-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="projects.html" class="active">مشاريعنا</a>
+                <a href="contact.html">اتصل بنا</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-banner">
+        <div class="hero-bg"></div>
+        <div class="hero-text">
+            <h1>قصص نجاح</h1>
+            <p>حلولنا على أرض الواقع</p>
+        </div>
+    </section>
+
+    <div class="projects-list">
+        
+        <div class="project-row">
+            <div class="row-img" onclick="openModal('modal1')">
+                <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=800" alt="مشروع الفرافرة">
+            </div>
+            <div class="row-text">
+                <h3>تشغيل آبار الفرافرة</h3>
+                <p>هذا المشروع يعتبر نقلة نوعية في مجال الري بالطاقة الشمسية. قمنا بتركيب محطة بقدرة 100 حصان لتشغيل طلمبات الأعماق، مما وفر 70% من التكلفة.</p>
+                <button class="details-btn" onclick="openModal('modal1')"><i class="fa-solid fa-images"></i> شاهد الصور والفيديو</button>
+            </div>
+        </div>
+
+        <div class="project-row">
+            <div class="row-img" onclick="openModal('modal2')">
+                <img src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?q=80&w=800" alt="فيلا التجمع">
+            </div>
+            <div class="row-text">
+                <h3>فيلا التجمع الخامس</h3>
+                <p>نظام طاقة شمسية منزلي متصل بالشبكة (On-Grid) بقدرة 15 كيلو وات. المحطة تغطي استهلاك الفيلا نهاراً وتصدر الفائض للشبكة.</p>
+                <button class="details-btn" onclick="openModal('modal2')"><i class="fa-solid fa-images"></i> شاهد الألبوم الكامل</button>
+            </div>
+        </div>
+
+        <div class="project-row">
+            <div class="row-img" onclick="openModal('modal3')">
+                <img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?q=80&w=800" alt="محطة توشكى">
+            </div>
+            <div class="row-text">
+                <h3>محطة توشكى المركزية</h3>
+                <p>أحد أضخم مشاريعنا الاستثمارية. محطة مركزية بقدرة 500 كيلو وات لتشغيل نظام ري محوري (Pivot) يغطي 100 فدان بكفاءة عالية.</p>
+                <button class="details-btn" onclick="openModal('modal3')"><i class="fa-solid fa-video"></i> شاهد التغطية المصورة</button>
+            </div>
+        </div>
+
+    </div>
+
+    <section class="cta-footer">
+        <div class="cta-content">
+            <h2>هل أنت مستعد لبدء مشروعك القادم؟</h2>
+            <p>انضم لقائمة شركاء النجاح واستفد من طاقة نظيفة، مستدامة، وموفرة. نحن معك من التصميم وحتى التشغيل.</p>
+            <a href="contact.html" class="cta-btn">تواصل معنا الآن</a>
+        </div>
+    </section>
+
+    <footer class="bottom-footer">
+        <p>© 2025 جميع الحقوق محفوظة لشركة شمس المستقبل للطاقة الشمسية.</p>
+    </footer>
+
+
+    <div id="modal1" class="modal">
+        <span class="close-btn" onclick="closeModal('modal1')">&times;</span>
+        <div class="modal-content">
+            <h2>مشروع الفرافرة</h2>
+            <div class="video-container"><iframe src="https://www.youtube.com/embed/ScMzIvxBSi4" allowfullscreen></iframe></div>
+            <div class="modal-gallery">
+                <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800">
+                <img src="https://images.unsplash.com/photo-1566093097221-ac2335b09e70?w=800">
+                </div>
+        </div>
+    </div>
+    
+    <div id="modal2" class="modal">
+        <span class="close-btn" onclick="closeModal('modal2')">&times;</span>
+        <div class="modal-content">
+            <h2>فيلا التجمع</h2>
+            <div class="modal-gallery">
+                <img src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?w=800">
+                </div>
+        </div>
+    </div>
+
+    <div id="modal3" class="modal">
+        <span class="close-btn" onclick="closeModal('modal3')">&times;</span>
+        <div class="modal-content">
+            <h2>محطة توشكى</h2>
+            <div class="video-container"><iframe src="https://www.youtube.com/embed/ScMzIvxBSi4" allowfullscreen></iframe></div>
+            <div class="modal-gallery">
+                <img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=800">
+                </div>
+        </div>
+    </div>
+
+</body>
+</html>
