@@ -171,4 +171,224 @@
             text-align: center; padding: 80px 20px;
         }
         .cta-footer h2 { color: #fff !important; font-size: 2.2rem; margin-bottom: 20px; font-weight: 900; }
-        .cta-footer p { color: #fff !important; font-size: 1.2rem
+        .cta-footer p { color: #fff !important; font-size: 1.2rem; opacity: 1; margin-bottom: 35px; max-width: 800px; margin-left: auto; margin-right: auto; }
+        
+        .cta-btn {
+            background: var(--orange); color: #fff; padding: 15px 45px; border-radius: 5px;
+            font-size: 1.1rem; font-weight: bold; display: inline-block; transition: 0.3s;
+        }
+        .cta-btn:hover { background: #fff; color: var(--blue); transform: translateY(-3px); }
+
+        /* ================= الحقوق ================= */
+        footer { background: #111; color: #777; padding: 25px; text-align: center; font-size: 0.9rem; border-top: 1px solid #222; }
+
+        /* ================= 📱 تعديلات الموبايل 📱 ================= */
+        @media (max-width: 768px) {
+            header .container { flex-direction: row-reverse; } 
+            .logo img { height: 50px; }
+            .nav-links { gap: 10px; }
+            .nav-links a { font-size: 0.85rem; padding: 5px; }
+            .btn-main { display: none; } 
+
+            .hero-slider { height: 75vh; }
+            .slide-content h1 { font-size: 2rem; }
+            .slide-content p { font-size: 1.1rem; }
+            .prev-btn, .next-btn { display: none; } /* إخفاء الأسهم في الموبايل للنظافة */
+
+            .about-grid { grid-template-columns: 1fr; } /* تحويل المربعات لعمود واحد في الموبايل فقط */
+            .stats-grid { grid-template-columns: 1fr; gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo"><img src="logo.png" alt="شمس المستقبل"></a>
+            <nav class="nav-links">
+                <a href="index.html" class="active">الرئيسية</a>
+                <a href="projects.html">مشاريعنا</a>
+                <a href="contact.html">اتصل بنا</a>
+                <a href="contact.html" class="btn-main">اطلب عرض سعر</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-slider">
+        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1497440001374-f26997328c1b?q=80&w=1920');">
+            <div class="slide-content">
+                <h1>حلول "المفتاح" المتكاملة</h1>
+                <p>تعاقد على الموقع كاملاً: أعمال مدنية، توريد طلمبات، ومحطات شمسية.. نحن نتحمل المسؤولية كاملة</p>
+                <a href="projects.html" class="slide-btn">اكتشف خدماتنا</a>
+            </div>
+        </div>
+        
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1566093097221-ac2335b09e70?q=80&w=1920');">
+            <div class="slide-content">
+                <h1>ضمان وراحة بال</h1>
+                <p>ضمان سنة كاملة ضد عيوب الصناعة مع توفير بدائل تشغيل فورية أثناء الصيانة</p>
+                <a href="contact.html" class="slide-btn">اطلب معاينة</a>
+            </div>
+        </div>
+
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1613665813446-82a78c468a1d?q=80&w=1920');">
+            <div class="slide-content">
+                <h1>أنظمة للمنازل والفيلات</h1>
+                <p>حول منزلك للطاقة النظيفة ووفر فاتورتك الشهرية مع أحدث الأنظمة المتصلة بالشبكة</p>
+                <a href="contact.html" class="slide-btn">تواصل معنا</a>
+            </div>
+        </div>
+
+        <div class="prev-btn" onclick="moveSlide(-1)"><i class="fa-solid fa-chevron-left"></i></div>
+        <div class="next-btn" onclick="moveSlide(1)"><i class="fa-solid fa-chevron-right"></i></div>
+    </section>
+
+    <section class="about-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>من نحن؟</h2>
+                <p>شريكك الهندسي الموثوق للطاقة المتجددة في مصر</p>
+            </div>
+            
+            <div class="about-intro">
+                <p>
+                    شركة شمس المستقبل هي كيان هندسي مصري رائد. نتميز بتقديم خدمات "المقاولة الكاملة" للموقع، حيث لا نكتفي بتركيب المحطة الشمسية، 
+                    بل نقوم بتنفيذ الأعمال المدنية وتوريد الطلمبات ومستلزمات التشغيل، لنسلمك مشروعاً جاهزاً للإنتاج فوراً.
+                </p>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="card-icon"><i class="fa-solid fa-paper-plane"></i></div>
+                    <h3>رسالتنا</h3>
+                    <p>تمكين المزارعين والمستثمرين من الاستقلال الطاقي الكامل، عبر أنظمة تتحمل أقسى الظروف.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon"><i class="fa-solid fa-bullseye"></i></div>
+                    <h3>أهدافنا</h3>
+                    <p>أن نكون المرجع الأول للطاقة النظيفة في مصر، عبر تقديم نموذج يجمع بين الجودة والالتزام.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                    <h3>قيمنا</h3>
+                    <p>المصداقية هي رأس مالنا. نلتزم بضمانات حقيقية ودعم فني مستمر لشركائنا.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>لماذا شمس المستقبل؟</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <h3><i class="fa-solid fa-trowel-bricks"></i> مقاولة الموقع بالكامل</h3>
+                    <p>نتولى تنفيذ الأعمال المدنية والقواعد الخرسانية وتوريد كافة مستلزمات الطلمبات والغواطس.</p>
+                </div>
+                <div class="feature-box">
+                    <h3><i class="fa-solid fa-shield-halved"></i> ضمان حقيقي شامل</h3>
+                    <p>نقدم ضماناً كاملاً لمدة سنة ضد عيوب الصناعة والتركيب. استثمارك معنا في أمان تام.</p>
+                </div>
+                <div class="feature-box">
+                    <h3><i class="fa-solid fa-rotate"></i> بدائل تشغيل فورية</h3>
+                    <p>ندعم المواقع ببدائل تشغيل أثناء فترات الصيانة لضمان عدم توقف إنتاجك ولو لساعة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>خدماتنا المتكاملة</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img"><img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=800"></div>
+                    <div class="service-info">
+                        <h3>الحلول الزراعية</h3>
+                        <ul>
+                            <li><i class="fa-solid fa-check"></i> تشغيل طلمبات الأعماق والري المحوري</li>
+                            <li><i class="fa-solid fa-check"></i> تنفيذ الأعمال المدنية والخرسانات</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img"><img src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?q=80&w=800"></div>
+                    <div class="service-info">
+                        <h3>المحطات السكنية</h3>
+                        <ul>
+                            <li><i class="fa-solid fa-check"></i> أنظمة On-Grid لتقليل الفاتورة</li>
+                            <li><i class="fa-solid fa-check"></i> أنظمة Off-Grid للمناطق النائية</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img"><img src="https://images.unsplash.com/photo-1581094794329-cd1361ddee25?q=80&w=800"></div>
+                    <div class="service-info">
+                        <h3>الصيانة والدعم</h3>
+                        <ul>
+                            <li><i class="fa-solid fa-check"></i> عقود صيانة دورية لضمان الكفاءة</li>
+                            <li><i class="fa-solid fa-check"></i> توفير بدائل تشغيل أثناء الأعطال</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>+8</h3>
+                    <p>سنوات خبرة</p>
+                </div>
+                <div class="stat-item">
+                    <h3>+150</h3>
+                    <p>مشروع ناجح</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>طاقة نظيفة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-footer">
+        <div class="container">
+            <h2>جاهز لتقليل فواتيرك وزيادة أرباحك؟</h2>
+            <p>لا تتردد في التواصل معنا. فريقنا الهندسي جاهز للرد على استفساراتك.</p>
+            <a href="contact.html" class="cta-btn">تواصل معنا الآن</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 جميع الحقوق محفوظة لشركة شمس المستقبل.</p>
+    </footer>
+
+    <script>
+        let slideIndex = 1;
+        const slides = document.querySelectorAll('.slide');
+        function autoShowSlides() {
+            for (let i = 0; i < slides.length; i++) slides[i].classList.remove('active');
+            slideIndex++;
+            if (slideIndex > slides.length) slideIndex = 1;
+            slides[slideIndex-1].classList.add('active');
+            setTimeout(autoShowSlides, 5000); 
+        }
+        function moveSlide(n) {
+            slideIndex += n - 1;
+            if (slideIndex >= slides.length) slideIndex = 0;
+            if (slideIndex < 0) slideIndex = slides.length - 1;
+            for (let i = 0; i < slides.length; i++) slides[i].classList.remove('active');
+            slides[slideIndex].classList.add('active');
+        }
+        autoShowSlides();
+    </script>
+
+</body>
+</html>
