@@ -11,22 +11,51 @@
 
     <style>
         /* ================= أساسيات ================= */
-        :root { --blue: #0066cc; --orange: #fbad18; --green: #25d366; --dark: #333; }
+        :root { 
+            --blue: #0066cc; 
+            --orange: #fbad18; 
+            --green: #25d366; 
+            --dark: #333; 
+        }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Cairo', sans-serif; background-color: #f9f9f9; color: var(--dark); line-height: 1.6; }
+        body { 
+            font-family: 'Cairo', sans-serif; 
+            background-color: #f9f9f9; 
+            color: var(--dark); 
+            line-height: 1.6; 
+        }
         a { text-decoration: none; transition: 0.3s; }
 
-        /* ================= الهيدر ================= */
+        /* ================= الهيدر والتنقل ================= */
         header { 
-            background: #fff; padding: 10px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+            background: #fff; 
+            padding: 10px 0; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
         }
         .container { 
-            max-width: 1200px; margin: 0 auto; padding: 0 20px; 
-            display: flex; justify-content: space-between; align-items: center; flex-direction: row-reverse; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            flex-direction: row-reverse; 
         }
-        /* تأكد من وجود لوجو PNG بخلفية شفافة للحصول على أفضل نتيجة */
-        .logo img { height: 100px; mix-blend-mode: multiply; }
-        .nav-links { display: flex; gap: 20px; }
+        
+        /* === تعديل الشعار لجعله متجاوباً === */
+        .logo img { 
+            height: 80px; /* تم تصغيره قليلاً ليتناسب مع الموبايل */
+            mix-blend-mode: multiply; 
+            max-width: 100%; /* ضمان عدم تجاوز عرض الحاوية */
+        }
+        .nav-links { 
+            display: flex; 
+            gap: 20px; 
+            align-items: center; /* لمحاذاة العناصر عمودياً */
+        }
         .nav-links a { color: var(--dark); font-weight: 700; }
         .nav-links a:hover, .nav-links a.active { color: var(--blue); }
         .btn-main { background: var(--orange); color: #fff !important; padding: 10px 25px; border-radius: 50px; }
@@ -41,6 +70,7 @@
         .page-header::before {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(rgba(0,50,150,0.9), rgba(0,50,150,0.7));
+            z-index: 1; /* يجب أن تكون تحت المحتوى */
         }
         .header-content { position: relative; z-index: 2; }
         .page-header h1 { font-size: 3rem; margin-bottom: 10px; }
@@ -48,8 +78,14 @@
 
         /* ================= كروت التواصل ================= */
         .contact-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px; margin: -50px auto 50px; max-width: 1100px; padding: 0 20px; position: relative; z-index: 3;
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; 
+            margin: -50px auto 50px; 
+            max-width: 1100px; 
+            padding: 0 20px; 
+            position: relative; 
+            z-index: 3;
         }
 
         .contact-card {
@@ -84,16 +120,14 @@
         .map-section { height: 400px; width: 100%; background: #ddd; }
         .map-section iframe { width: 100%; height: 100%; border: 0; }
 
-        /* ================= 🌟 بنر النهاية الجديد (حقل زراعي + طاقة) 🌟 ================= */
+        /* ================= بنر النهاية ================= */
         .final-banner {
             position: relative;
-            height: 400px; /* ارتفاع مناسب للبنر */
-            /* صورة حقل زراعي مع طاقة شمسية وقت الغروب */
+            height: 400px; 
             background: url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=1920') center center/cover no-repeat fixed;
             display: flex; align-items: center; justify-content: center; text-align: center; color: #fff;
         }
         
-        /* طبقة اللون الدافئة (Golden Hour Overlay) */
         .final-banner::before {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(251, 173, 24, 0.3));
@@ -107,13 +141,69 @@
         /* ================= الفوتر ================= */
         footer { background: #151f28; color: #fff; padding: 40px 0; text-align: center; }
 
-        /* للموبايل */
+        /* ================= 📱 تعديلات الموبايل 📱 ================= */
         @media (max-width: 768px) {
-            .container { flex-direction: column; }
-            .nav-links { flex-direction: column; width: 100%; gap: 10px; margin-top: 20px; text-align: center; }
-            .contact-grid { margin-top: 30px; }
-            .final-banner { height: 300px; background-attachment: scroll; } /* إلغاء التثبيت على الموبايل للأداء */
-            .banner-content h2 { font-size: 2rem; }
+            
+            /* تعديل الهيدر على الموبايل */
+            .container { 
+                flex-direction: column; /* جعل اللوجو والروابط تحت بعض */
+                padding: 0 10px; /* تقليل الحشو */
+            }
+
+            /* تعديل اللوجو */
+            .logo img {
+                height: 60px; /* تصغير اللوجو أكثر ليناسب المساحة */
+                margin-top: 10px;
+            }
+
+            /* تعديل قائمة التنقل */
+            .nav-links { 
+                flex-direction: column; 
+                width: 100%; 
+                gap: 5px; /* تقليل المسافة بين الروابط */
+                margin-top: 10px; 
+                text-align: center; 
+            }
+            .nav-links a { 
+                padding: 5px 0; /* مساحة مناسبة للضغط */
+            }
+            .btn-main {
+                margin-top: 5px; /* مسافة للزر */
+                padding: 8px 20px;
+            }
+
+            /* تعديل عنوان الصفحة */
+            .page-header {
+                padding: 50px 0;
+            }
+            .page-header h1 { 
+                font-size: 2.5rem; 
+            }
+            .page-header p { 
+                font-size: 1rem; 
+            }
+
+            /* تعديل كروت التواصل */
+            .contact-grid { 
+                margin-top: 30px; 
+                padding: 0 10px;
+                grid-template-columns: 1fr; /* جعل كل كارت يأخذ سطر كامل */
+            }
+            .contact-card {
+                padding: 30px 15px;
+            }
+
+            /* تعديل البنر */
+            .final-banner { 
+                height: 250px; 
+                background-attachment: scroll; 
+            }
+            .banner-content h2 { 
+                font-size: 1.8rem; 
+            }
+            .banner-content p { 
+                font-size: 1.1rem; 
+            }
         }
     </style>
 </head>
