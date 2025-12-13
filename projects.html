@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معرض مشاريع الطاقة الشمسية وأنظمة الري</title>
+    <style>
+        /* --- الأساسيات --- */
+        :root {
+            --primary-color: #1a5f7a; /* أزرق نفطي */
+            --accent-color: #fca311; /* أصفر ذهبي */
+            --bg-color: #f0f2f5;
+            --card-bg: #ffffff;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* --- الهيدر --- */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #002b36);
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* --- الحاوية --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* --- عناوين الأقسام --- */
+        .section-title {
+            text-align: center;
+            margin: 3rem 0 2rem;
+            color: var(--primary-color);
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- شبكة الفيديوهات (Reels) --- */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            justify-items: center;
+        }
+
+        .video-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 100%;
+            /* نسبة تقريبية لفيديوهات الريلز لتظهر بشكل جيد */
+            height: 550px; 
+            position: relative;
+        }
+
+        .video-card iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* --- شبكة الصور --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* --- المودال (Lightbox) --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.95);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 5px;
+            box-shadow: 0 0 30px rgba(255,163,17, 0.2);
+            animation: zoomIn 0.3s;
+        }
+
+        @keyframes zoomIn {
+            from {transform:scale(0.8); opacity: 0;}
+            to {transform:scale(1); opacity: 1;}
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 50px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .close:hover {
+            color: var(--accent-color);
+        }
+
+        /* --- التذييل --- */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #222;
+            color: #aaa;
+            margin-top: 4rem;
+            border-top: 5px solid var(--accent-color);
+        }
+
+        /* --- تججاوب الشاشات --- */
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.8rem; }
+            .container { padding: 1rem; }
+            .video-card { height: 450px; } /* ارتفاع أقل للموبايل */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>مشاريع الطاقة الشمسية المتطورة</h1>
+        <p>توثيق حي لأعمال التركيب والتشغيل في الميدان</p>
+    </header>
+
+    <div class="container">
+
+        <h2 class="section-title">فيديوهات من الموقع (Reels)</h2>
+        <div class="video-grid">
+            <div class="video-card">
+                <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F496023676847091&show_text=false&t=0" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F711969780644425&show_text=false&t=0" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F281681173391548&show_text=false&t=0" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F123205236222185&show_text=false&t=0" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            </div>
+             <div class="video-card">
+                <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F777435816614247&show_text=false&t=0" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            </div>
+        </div>
+
+        <h2 class="section-title">معرض صور المشاريع</h2>
+        <div class="gallery-grid" id="galleryGrid">
+            </div>
+
+    </div>
+
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2025 | تنفيذ وتصميم احترافي</p>
+    </footer>
+
+    <script>
+        // إعدادات المعرض
+        const imageFolder = 'images/projects/';
+        const totalImages = 13; // عدد الصور الكلي
+        const galleryGrid = document.getElementById('galleryGrid');
+
+        // دالة إنشاء معرض الصور
+        function initGallery() {
+            for (let i = 1; i <= totalImages; i++) {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                
+                const img = document.createElement('img');
+                img.src = `${imageFolder}${i}.jpg`;
+                img.alt = `مشروع رقم ${i}`;
+                img.loading = "lazy"; // تسريع تحميل الصفحة
+
+                item.appendChild(img);
+                galleryGrid.appendChild(item);
+
+                // فتح المودال عند النقر
+                item.addEventListener('click', function() {
+                    openModal(img.src);
+                });
+            }
+        }
+
+        // تشغيل الدالة فور تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', initGallery);
+
+        // التحكم في المودال (Lightbox)
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImg");
+        const closeBtn = document.getElementsByClassName("close")[0];
+
+        function openModal(src) {
+            modal.style.display = "block";
+            modalImg.src = src;
+            // منع التمرير في الخلفية عند فتح الصورة
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        closeBtn.onclick = closeModal;
+
+        // إغلاق عند النقر خارج الصورة
+        modal.onclick = function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // إغلاق بزر Esc
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeModal();
+            }
+        });
+    </script>
+
+</body>
+</html>
