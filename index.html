@@ -23,7 +23,7 @@
         img { max-width: 100%; height: auto; }
         p { line-height: 1.7; color: #666; }
 
-        /* ================= الهيدر (تعديل الأماكن) ================= */
+        /* ================= الهيدر (لوجو يسار - قائمة يمين) ================= */
         header { 
             background: #fff; padding: 10px 0; position: sticky; top: 0; z-index: 1000; 
             box-shadow: 0 4px 20px rgba(0,0,0,0.05); 
@@ -31,7 +31,6 @@
         .container { 
             width: 90%; max-width: 1200px; margin: 0 auto; 
             display: flex; justify-content: space-between; align-items: center; 
-            /* هذا السطر يعكس الاتجاه في العربي: اللوجو يسار والقائمة يمين */
             flex-direction: row-reverse; 
         }
         
@@ -84,11 +83,24 @@
         .section-header h2 { font-size: 2.5rem; color: var(--blue); font-weight: 900; margin-bottom: 15px; }
         .section-header .line { width: 70px; height: 4px; background: var(--orange); margin: 0 auto; }
 
-        /* ================= من نحن ================= */
+        /* ================= 1. قسم من نحن (محدث بالثلاث مربعات) ================= */
         .about-brief { background: #fff; text-align: center; }
-        .about-text { max-width: 800px; margin: 0 auto; font-size: 1.1rem; color: #555; }
+        .about-text { max-width: 800px; margin: 0 auto 50px; font-size: 1.1rem; color: #555; }
+        
+        .about-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px; margin-top: 30px;
+        }
+        .about-card {
+            background: #fdfdfd; padding: 30px 20px; border-radius: 15px; 
+            border: 1px solid #eee; transition: 0.3s;
+        }
+        .about-card:hover { transform: translateY(-5px); background: #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-color: var(--orange); }
+        .about-card i { font-size: 2.5rem; color: var(--orange); margin-bottom: 15px; }
+        .about-card h3 { font-size: 1.4rem; margin-bottom: 10px; color: var(--dark); font-weight: 800; }
+        .about-card p { font-size: 0.95rem; color: #666; margin: 0; }
 
-        /* ================= خدماتنا ================= */
+        /* ================= 2. خدماتنا ================= */
         .services-section { background: var(--light-bg); }
         .services-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -103,7 +115,7 @@
         .service-card i { font-size: 3rem; color: var(--blue); margin-bottom: 20px; }
         .service-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
 
-        /* ================= خطوات العمل ================= */
+        /* ================= 3. خطوات العمل ================= */
         .process-section { background: #fff; }
         .steps-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -117,7 +129,7 @@
         }
         .step-item h3 { font-size: 1.3rem; margin-bottom: 10px; }
 
-        /* ================= قسم الأرقام (تم التصغير والنقل للأسفل) ================= */
+        /* ================= 4. قسم الأرقام (مصغر وفي الأسفل) ================= */
         .stats-section {
             background: #fff; color: var(--dark); padding: 30px 0; text-align: center; border-top: 1px solid #eee;
         }
@@ -125,16 +137,14 @@
             display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 20px; width: 90%; max-width: 800px; margin: 0 auto;
         }
-        /* تصغير الخطوط ليكون الشكل "سمبل" */
         .stat-item h3 { font-size: 1.8rem; font-weight: 800; margin-bottom: 5px; color: var(--blue); }
         .stat-item p { font-size: 0.95rem; color: #777; margin: 0; font-weight: 600; }
 
-        /* ================= الفوتر التحفيزي (تعديل الألوان للأبيض) ================= */
+        /* ================= 5. الفوتر التحفيزي (نص أبيض) ================= */
         .cta-footer {
             background: linear-gradient(rgba(0, 102, 204, 0.95), rgba(0, 80, 180, 0.95)), url('https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=1920') center/cover fixed;
             text-align: center; padding: 60px 20px;
         }
-        /* اللون الأبيض للنصوص */
         .cta-footer h2 { color: #fff !important; font-size: 2rem; margin-bottom: 15px; font-weight: 800; }
         .cta-footer p { color: #fff !important; font-size: 1.1rem; opacity: 0.95; margin-bottom: 25px; }
         
@@ -144,12 +154,11 @@
         }
         .cta-btn:hover { background: #fff; color: var(--dark); }
 
-        /* ================= حقوق الملكية ================= */
+        /* ================= الحقوق ================= */
         footer { background: #111; color: #888; padding: 20px; text-align: center; font-size: 0.85rem; }
 
         /* ================= 📱 تعديلات الموبايل 📱 ================= */
         @media (max-width: 768px) {
-            /* تعديل الهيدر للموبايل */
             .container { flex-direction: row-reverse; justify-content: space-between; } 
             .logo img { height: 50px; }
             .nav-links { gap: 10px; }
@@ -172,7 +181,6 @@
     <header>
         <div class="container">
             <a href="index.html" class="logo"><img src="logo.png" alt="شمس المستقبل"></a>
-
             <nav class="nav-links">
                 <a href="index.html" class="active">الرئيسية</a>
                 <a href="projects.html">مشاريعنا</a>
@@ -221,6 +229,24 @@
                 شركة مصرية رائدة متخصصة في تصميم وتنفيذ محطات الطاقة الشمسية. 
                 نمتلك خبرة واسعة في تحويل الآبار للعمل بالطاقة الشمسية، بالإضافة إلى تركيب المحطات المنزلية المتصلة بالشبكة.
             </p>
+            
+            <div class="about-grid">
+                <div class="about-card">
+                    <i class="fa-solid fa-bullseye"></i>
+                    <h3>رسالتنا</h3>
+                    <p>تمكين عملائنا من استثمار طاقة الشمس لتقليل التكاليف وزيادة الإنتاجية بأعلى كفاءة.</p>
+                </div>
+                <div class="about-card">
+                    <i class="fa-solid fa-star"></i>
+                    <h3>أهدافنا</h3>
+                    <p>نشر الطاقة النظيفة في كل ربوع مصر وتوفير حلول اقتصادية مستدامة للمزارع والمنازل.</p>
+                </div>
+                <div class="about-card">
+                    <i class="fa-solid fa-hand-holding-heart"></i>
+                    <h3>قيمنا</h3>
+                    <p>المصداقية في التعامل، الجودة في التنفيذ، والالتزام بخدمة ما بعد البيع الحقيقية.</p>
+                </div>
+            </div>
         </div>
     </section>
 
