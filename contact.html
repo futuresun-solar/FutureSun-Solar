@@ -47,14 +47,14 @@
         
         /* === تعديل الشعار لجعله متجاوباً === */
         .logo img { 
-            height: 80px; /* تم تصغيره قليلاً ليتناسب مع الموبايل */
+            height: 80px; 
             mix-blend-mode: multiply; 
-            max-width: 100%; /* ضمان عدم تجاوز عرض الحاوية */
+            max-width: 100%; 
         }
         .nav-links { 
             display: flex; 
             gap: 20px; 
-            align-items: center; /* لمحاذاة العناصر عمودياً */
+            align-items: center; 
         }
         .nav-links a { color: var(--dark); font-weight: 700; }
         .nav-links a:hover, .nav-links a.active { color: var(--blue); }
@@ -70,7 +70,7 @@
         .page-header::before {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(rgba(0,50,150,0.9), rgba(0,50,150,0.7));
-            z-index: 1; /* يجب أن تكون تحت المحتوى */
+            z-index: 1; 
         }
         .header-content { position: relative; z-index: 2; }
         .page-header h1 { font-size: 3rem; margin-bottom: 10px; }
@@ -146,13 +146,13 @@
             
             /* تعديل الهيدر على الموبايل */
             .container { 
-                flex-direction: column; /* جعل اللوجو والروابط تحت بعض */
-                padding: 0 10px; /* تقليل الحشو */
+                flex-direction: column; 
+                padding: 0 10px; 
             }
 
             /* تعديل اللوجو */
             .logo img {
-                height: 60px; /* تصغير اللوجو أكثر ليناسب المساحة */
+                height: 60px; 
                 margin-top: 10px;
             }
 
@@ -160,15 +160,15 @@
             .nav-links { 
                 flex-direction: column; 
                 width: 100%; 
-                gap: 5px; /* تقليل المسافة بين الروابط */
+                gap: 5px; 
                 margin-top: 10px; 
                 text-align: center; 
             }
             .nav-links a { 
-                padding: 5px 0; /* مساحة مناسبة للضغط */
+                padding: 5px 0; 
             }
             .btn-main {
-                margin-top: 5px; /* مسافة للزر */
+                margin-top: 5px; 
                 padding: 8px 20px;
             }
 
@@ -187,7 +187,7 @@
             .contact-grid { 
                 margin-top: 30px; 
                 padding: 0 10px;
-                grid-template-columns: 1fr; /* جعل كل كارت يأخذ سطر كامل */
+                grid-template-columns: 1fr; 
             }
             .contact-card {
                 padding: 30px 15px;
@@ -211,7 +211,7 @@
 
     <header>
         <div class="container">
-            <a href="index.html" class="logo"><img src="futuresun logo-01.jpg" alt="شمس المستقبل"></a>
+            <a href="index.html" class="logo"><img src="images/logo.jpg" alt="شمس المستقبل"></a>
             <nav class="nav-links">
                 <a href="index.html">الرئيسية</a>
                 <a href="projects.html">مشاريعنا</a>
