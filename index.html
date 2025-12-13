@@ -10,13 +10,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* ================= أساسيات التصميم ================= */
+        /* ================= أساسيات التصميم (بدون مساحات بيضاء) ================= */
         :root { --blue: #0066cc; --orange: #fbad18; --dark: #333; --light-bg: #f4f7f6; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
-        body { 
+        body, html { 
             font-family: 'Cairo', sans-serif; background: #fff; color: var(--dark); 
-            overflow-x: hidden; width: 100%;
+            overflow-x: hidden; width: 100%; max-width: 100%;
         }
         
         a { text-decoration: none; transition: 0.3s; }
@@ -41,13 +41,14 @@
         .nav-links a:hover, .nav-links a.active { color: var(--blue); }
         .btn-main { background: var(--orange); color: #fff !important; padding: 8px 25px; border-radius: 50px; font-size: 0.95rem; }
 
-        /* ================= سلايدر البنرات المتحرك ================= */
-        .hero-slider { position: relative; height: 85vh; overflow: hidden; background: #222; }
+        /* ================= السلايدر المتحرك (تصحيح الحركة) ================= */
+        .hero-slider { position: relative; height: 85vh; overflow: hidden; background: #222; direction: ltr; }
         .slide {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-size: cover; background-position: center;
             display: flex; align-items: center; justify-content: center; text-align: center;
             opacity: 0; transition: opacity 1s ease-in-out;
+            z-index: 0;
         }
         .slide.active { opacity: 1; z-index: 1; }
         
@@ -57,7 +58,7 @@
             background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7)); z-index: 1;
         }
 
-        .slide-content { position: relative; z-index: 2; color: #fff; padding: 20px; max-width: 900px; }
+        .slide-content { position: relative; z-index: 2; color: #fff; padding: 20px; max-width: 900px; direction: rtl; }
         .slide-content h1 { font-size: 3.5rem; font-weight: 900; margin-bottom: 20px; text-shadow: 0 5px 15px rgba(0,0,0,0.8); }
         .slide-content p { font-size: 1.4rem; margin-bottom: 30px; font-weight: 600; color: #f0f0f0; }
         
@@ -84,7 +85,7 @@
         .section-header h2 { font-size: 2.5rem; color: var(--blue); font-weight: 900; margin-bottom: 15px; }
         .section-header .line { width: 70px; height: 4px; background: var(--orange); margin: 0 auto; }
 
-        /* ================= 1. قسم من نحن (مختصر) ================= */
+        /* ================= 1. قسم من نحن ================= */
         .about-brief { background: #fff; text-align: center; }
         .about-text { max-width: 800px; margin: 0 auto; font-size: 1.1rem; color: #555; }
 
@@ -130,8 +131,8 @@
 
         /* ================= 5. الفوتر التحفيزي ================= */
         .cta-footer {
-            /* صورة خلفية ثابتة من النت لضمان العمل */
-            background: linear-gradient(rgba(17, 17, 17, 0.9), rgba(17, 17, 17, 0.9)), url('https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=1920') center/cover fixed;
+            /* خلفية زرقاء ثابتة جذابة */
+            background: linear-gradient(rgba(0, 102, 204, 0.9), rgba(0, 80, 180, 0.95)), url('https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=1920') center/cover fixed;
             color: #fff; text-align: center; padding: 80px 20px;
         }
         .cta-footer h2 { font-size: 2.5rem; margin-bottom: 20px; font-weight: 900; }
@@ -149,13 +150,15 @@
             .logo img { height: 60px; }
             .nav-links { width: 100%; justify-content: center; gap: 10px; flex-wrap: wrap; }
             .nav-links a { font-size: 0.9rem; padding: 5px; }
-            .btn-main { display: none; } /* إخفاء الزر في القائمة العلوية */
+            .btn-main { display: none; } 
 
             /* السلايدر في الموبايل */
             .hero-slider { height: 60vh; }
             .slide-content h1 { font-size: 2rem; }
             .slide-content p { font-size: 1rem; }
             .slide-btn { padding: 10px 30px; font-size: 1rem; }
+            
+            /* أزرار السلايدر */
             .prev-btn, .next-btn { padding: 10px; font-size: 16px; }
 
             .section-header h2 { font-size: 2rem; }
@@ -259,3 +262,80 @@
             <div class="stat-item">
                 <h3>100%</h3>
                 <p>طاقة نظيفة</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <div class="section-header">
+            <h2>رحلة مشروعك معنا</h2>
+            <div class="line"></div>
+        </div>
+        <div class="steps-grid">
+            <div class="step-item">
+                <div class="step-num">1</div>
+                <h3>المعاينة والدراسة</h3>
+                <p>زيارة الموقع وتحليل الاحتياجات</p>
+            </div>
+            <div class="step-item">
+                <div class="step-num">2</div>
+                <h3>التصميم الهندسي</h3>
+                <p>اختيار أنسب المكونات والقدرات</p>
+            </div>
+            <div class="step-item">
+                <div class="step-num">3</div>
+                <h3>التركيب والتشغيل</h3>
+                <p>تنفيذ احترافي في وقت قياسي</p>
+            </div>
+            <div class="step-item">
+                <div class="step-num">4</div>
+                <h3>الدعم والصيانة</h3>
+                <p>خدمة ما بعد بيع مستمرة</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-footer">
+        <h2>جاهز لتقليل فواتيرك؟</h2>
+        <p style="margin-bottom: 30px; font-size: 1.2rem; opacity: 0.9;">تواصل معنا اليوم واحصل على استشارة هندسية مجانية لمشروعك</p>
+        <a href="contact.html" class="cta-btn">تواصل معنا الآن</a>
+    </section>
+
+    <footer>
+        <p>© 2025 جميع الحقوق محفوظة لشركة شمس المستقبل.</p>
+    </footer>
+
+    <script>
+        let slideIndex = 1;
+        const slides = document.querySelectorAll('.slide');
+
+        function autoShowSlides() {
+            // إخفاء الكل
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove('active');
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}
+            slides[slideIndex-1].classList.add('active');
+            setTimeout(autoShowSlides, 5000); // تغيير كل 5 ثواني
+        }
+
+        function moveSlide(n) {
+            // هذه الوظيفة للأزرار فقط
+            // ملاحظة: الأزرار قد تتعارض قليلاً مع المؤقت التلقائي البسيط، لكنها ستعمل
+            slideIndex += n - 1;
+            if (slideIndex >= slides.length) slideIndex = 0;
+            if (slideIndex < 0) slideIndex = slides.length - 1;
+            
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove('active');
+            }
+            slides[slideIndex].classList.add('active');
+        }
+        
+        // بدء التشغيل التلقائي
+        autoShowSlides();
+    </script>
+
+</body>
+</html>
