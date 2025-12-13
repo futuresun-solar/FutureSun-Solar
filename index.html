@@ -25,17 +25,16 @@
 
         .container { width: 90%; max-width: 1200px; margin: 0 auto; }
 
-        /* ================= الهيدر (لوجو يسار - قائمة يمين) ================= */
+        /* ================= الهيدر ================= */
         header { 
             background: #fff; padding: 15px 0; position: sticky; top: 0; z-index: 1000; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
         }
         header .container {
             display: flex; justify-content: space-between; align-items: center; 
-            flex-direction: row-reverse; /* عكس الاتجاه: اللوجو يسار */
+            flex-direction: row-reverse; /* اللوجو يسار والقائمة يمين */
         }
         
-        /* اللوجو سيقرأ من الملف المجاور للكود */
         .logo img { height: 75px; width: auto; }
 
         .nav-links { display: flex; gap: 25px; align-items: center; }
@@ -47,9 +46,11 @@
             border-radius: 50px; font-size: 1rem; border: none;
         }
 
-        /* ================= السلايدر العملاق ================= */
+        /* ================= السلايدر (تم تقليل الارتفاع) ================= */
         .hero-slider { 
-            position: relative; height: 90vh; overflow: hidden; background: #000; direction: ltr; 
+            position: relative; 
+            height: 75vh; /* 🛑 تم التعديل: ارتفاع متوسط ومناسب (كان 95vh) */
+            overflow: hidden; background: #000; direction: ltr; 
         }
         .slide {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -66,16 +67,16 @@
 
         .slide-content { position: relative; z-index: 2; color: #fff; padding: 20px; max-width: 1000px; direction: rtl; }
         .slide-content h1 { 
-            font-size: 3.8rem; font-weight: 900; margin-bottom: 25px; 
+            font-size: 3.5rem; font-weight: 900; margin-bottom: 20px; 
             text-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         .slide-content p { 
-            font-size: 1.4rem; margin-bottom: 40px; font-weight: 500; color: #f9f9f9; max-width: 800px; margin-left: auto; margin-right: auto;
+            font-size: 1.3rem; margin-bottom: 35px; font-weight: 500; color: #eee; max-width: 800px; margin-left: auto; margin-right: auto;
         }
         
         .slide-btn {
-            background: var(--orange); color: #fff; padding: 18px 50px; border-radius: 50px;
-            font-weight: bold; font-size: 1.2rem; display: inline-block; transition: 0.3s;
+            background: var(--orange); color: #fff; padding: 15px 45px; border-radius: 50px;
+            font-weight: bold; font-size: 1.1rem; display: inline-block; transition: 0.3s;
         }
         .slide-btn:hover { background: #fff; color: var(--dark); }
 
@@ -90,38 +91,34 @@
         .next-btn { right: 40px; }
 
         /* ================= الأقسام ================= */
-        section { padding: 90px 0; }
-        .section-header { text-align: center; margin-bottom: 60px; }
+        section { padding: 80px 0; }
+        .section-header { text-align: center; margin-bottom: 50px; }
         .section-header h2 { font-size: 2.5rem; color: var(--blue); font-weight: 900; margin-bottom: 15px; }
         .section-header p { max-width: 700px; margin: 0 auto; color: #777; font-size: 1.1rem; }
 
-        /* ================= 1. من نحن (تنسيق أفقي) ================= */
+        /* ================= 1. من نحن (تخطيط أفقي) ================= */
         .about-section { background: #fff; }
         .about-intro { text-align: center; max-width: 900px; margin: 0 auto 50px; }
         
-        /* الشبكة الأفقية */
         .about-grid {
-            display: grid; 
-            /* 3 أعمدة متساوية على الشاشات الكبيرة */
-            grid-template-columns: repeat(3, 1fr); 
+            display: grid; grid-template-columns: repeat(3, 1fr); /* 3 أعمدة */
             gap: 30px; margin-top: 40px;
         }
         .about-card {
             background: #fff; padding: 40px 25px; border-radius: 20px; 
             border: 1px solid #eee; transition: 0.4s; text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02); height: 100%; /* ارتفاع موحد */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
         }
         .about-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); border-color: var(--blue); }
         
         .card-icon { 
             width: 70px; height: 70px; background: rgba(0, 102, 204, 0.1); color: var(--blue);
             border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 1.8rem; margin: 0 auto 20px; transition: 0.3s;
+            font-size: 1.8rem; margin: 0 auto 20px;
         }
-        .about-card:hover .card-icon { background: var(--blue); color: #fff; }
         .about-card h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--dark); font-weight: 800; }
 
-        /* ================= 2. لماذا تختارنا (المميزات الحصرية) ================= */
+        /* ================= 2. لماذا تختارنا ================= */
         .features-section { background: var(--gray); }
         .features-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -136,7 +133,7 @@
         .feature-box i { color: var(--orange); font-size: 1.6rem; }
         .feature-box p { font-size: 1rem; color: #555; margin: 0; }
 
-        /* ================= 3. خدماتنا (صور Unsplash) ================= */
+        /* ================= 3. خدماتنا ================= */
         .services-section { background: #fff; }
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .service-card {
@@ -154,12 +151,12 @@
         .service-info li { margin-bottom: 10px; font-size: 0.95rem; color: #555; display: flex; align-items: center; gap: 10px; }
         .service-info li i { color: var(--orange); font-size: 0.8rem; }
 
-        /* ================= 4. الإحصائيات (أسفل الصفحة) ================= */
+        /* ================= 4. الإحصائيات ================= */
         .stats-section {
             background: #fff; padding: 50px 0; border-top: 1px solid #eee;
         }
         .stats-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); /* 3 أعمدة */
+            display: grid; grid-template-columns: repeat(3, 1fr); 
             gap: 20px; text-align: center; max-width: 800px; margin: 0 auto;
         }
         .stat-item h3 { font-size: 2.2rem; font-weight: 900; color: var(--blue); margin-bottom: 5px; }
@@ -184,18 +181,20 @@
 
         /* ================= 📱 تعديلات الموبايل 📱 ================= */
         @media (max-width: 768px) {
-            header .container { flex-direction: row-reverse; } 
+            .container { flex-direction: row-reverse; } 
             .logo img { height: 50px; }
             .nav-links { gap: 10px; }
             .nav-links a { font-size: 0.85rem; padding: 5px; }
             .btn-main { display: none; } 
 
-            .hero-slider { height: 75vh; }
+            /* 🛑 تعديل ارتفاع السلايدر للموبايل ليكون أقصر */
+            .hero-slider { height: 50vh; } 
+            
             .slide-content h1 { font-size: 2rem; }
-            .slide-content p { font-size: 1.1rem; }
-            .prev-btn, .next-btn { display: none; } /* إخفاء الأسهم في الموبايل للنظافة */
+            .slide-content p { font-size: 1rem; }
+            .prev-btn, .next-btn { display: none; }
 
-            .about-grid { grid-template-columns: 1fr; } /* تحويل المربعات لعمود واحد في الموبايل فقط */
+            .about-grid { grid-template-columns: 1fr; } /* عمود واحد في الموبايل */
             .stats-grid { grid-template-columns: 1fr; gap: 30px; }
         }
     </style>
@@ -215,7 +214,7 @@
     </header>
 
     <section class="hero-slider">
-        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1497440001374-f26997328c1b?q=80&w=1920');">
+        <div class="slide active" style="background-image: url('https://static.vecteezy.com/system/resources/previews/001/235/998/original/solar-panel-cell-on-dramatic-sunset-sky-background-free-photo.jpg');">
             <div class="slide-content">
                 <h1>حلول "المفتاح" المتكاملة</h1>
                 <p>تعاقد على الموقع كاملاً: أعمال مدنية، توريد طلمبات، ومحطات شمسية.. نحن نتحمل المسؤولية كاملة</p>
@@ -389,6 +388,5 @@
         }
         autoShowSlides();
     </script>
-
 </body>
 </html>
