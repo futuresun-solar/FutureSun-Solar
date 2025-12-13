@@ -23,15 +23,20 @@
         img { max-width: 100%; height: auto; }
         p { line-height: 1.7; color: #666; }
 
-        /* ================= الهيدر (لوجو يسار - قائمة يمين) ================= */
+        /* حاوية أساسية (تعديل هام: حذفنا منها خصائص الفليكس العامة) */
+        .container { 
+            width: 90%; max-width: 1200px; margin: 0 auto; 
+        }
+
+        /* ================= الهيدر ================= */
         header { 
             background: #fff; padding: 10px 0; position: sticky; top: 0; z-index: 1000; 
             box-shadow: 0 4px 20px rgba(0,0,0,0.05); 
         }
-        .container { 
-            width: 90%; max-width: 1200px; margin: 0 auto; 
+        /* تنسيق خاص بحاوية الهيدر فقط ليجعل العناصر بجانب بعض */
+        header .container {
             display: flex; justify-content: space-between; align-items: center; 
-            flex-direction: row-reverse; 
+            flex-direction: row-reverse; /* اللوجو يسار والقائمة يمين */
         }
         
         .logo img { height: 70px; width: auto; }
@@ -83,8 +88,11 @@
         .section-header h2 { font-size: 2.5rem; color: var(--blue); font-weight: 900; margin-bottom: 15px; }
         .section-header .line { width: 70px; height: 4px; background: var(--orange); margin: 0 auto; }
 
-        /* ================= 1. قسم من نحن (محدث بالثلاث مربعات) ================= */
+        /* ================= 1. من نحن (تعديل الترتيب) ================= */
         .about-brief { background: #fff; text-align: center; }
+        /* جعلنا الحاوية هنا بلوك عادي لكي تنزل العناصر تحت بعضها */
+        .about-brief .container { display: block; } 
+        
         .about-text { max-width: 800px; margin: 0 auto 50px; font-size: 1.1rem; color: #555; }
         
         .about-grid {
@@ -129,7 +137,7 @@
         }
         .step-item h3 { font-size: 1.3rem; margin-bottom: 10px; }
 
-        /* ================= 4. قسم الأرقام (مصغر وفي الأسفل) ================= */
+        /* ================= 4. قسم الأرقام (مصغر) ================= */
         .stats-section {
             background: #fff; color: var(--dark); padding: 30px 0; text-align: center; border-top: 1px solid #eee;
         }
@@ -140,13 +148,14 @@
         .stat-item h3 { font-size: 1.8rem; font-weight: 800; margin-bottom: 5px; color: var(--blue); }
         .stat-item p { font-size: 0.95rem; color: #777; margin: 0; font-weight: 600; }
 
-        /* ================= 5. الفوتر التحفيزي (نص أبيض) ================= */
+        /* ================= 5. الفوتر التحفيزي (نص أبيض ناصع) ================= */
         .cta-footer {
             background: linear-gradient(rgba(0, 102, 204, 0.95), rgba(0, 80, 180, 0.95)), url('https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=1920') center/cover fixed;
             text-align: center; padding: 60px 20px;
         }
-        .cta-footer h2 { color: #fff !important; font-size: 2rem; margin-bottom: 15px; font-weight: 800; }
-        .cta-footer p { color: #fff !important; font-size: 1.1rem; opacity: 0.95; margin-bottom: 25px; }
+        /* كود اللون الأبيض مع important لضمان التطبيق */
+        .cta-footer h2 { color: #ffffff !important; font-size: 2rem; margin-bottom: 15px; font-weight: 800; }
+        .cta-footer p { color: #ffffff !important; font-size: 1.1rem; opacity: 1; margin-bottom: 25px; }
         
         .cta-btn {
             background: var(--orange); color: #fff; padding: 12px 35px; border-radius: 50px;
@@ -159,7 +168,7 @@
 
         /* ================= 📱 تعديلات الموبايل 📱 ================= */
         @media (max-width: 768px) {
-            .container { flex-direction: row-reverse; justify-content: space-between; } 
+            header .container { flex-direction: row-reverse; justify-content: space-between; } 
             .logo img { height: 50px; }
             .nav-links { gap: 10px; }
             .nav-links a { font-size: 0.85rem; padding: 5px; }
@@ -181,6 +190,7 @@
     <header>
         <div class="container">
             <a href="index.html" class="logo"><img src="logo.png" alt="شمس المستقبل"></a>
+
             <nav class="nav-links">
                 <a href="index.html" class="active">الرئيسية</a>
                 <a href="projects.html">مشاريعنا</a>
@@ -227,7 +237,7 @@
         <div class="container">
             <p class="about-text">
                 شركة مصرية رائدة متخصصة في تصميم وتنفيذ محطات الطاقة الشمسية. 
-                نمتلك خبرة واسعة في تحويل الآبار للعمل بالطاقة الشمسية، بالإضافة إلى تركيب المحطات المنزلية المتصلة بالشبكة.
+                نمتلك خبرة واسعة في تحويل الآبار للعمل بالطاقة الشمسية، بالإضافة إلى تركيب المحطات المنزلية والصناعية المتصلة والغير متصلة بالشبكة.
             </p>
             
             <div class="about-grid">
@@ -239,7 +249,7 @@
                 <div class="about-card">
                     <i class="fa-solid fa-star"></i>
                     <h3>أهدافنا</h3>
-                    <p>نشر الطاقة النظيفة في كل ربوع مصر وتوفير حلول اقتصادية مستدامة للمزارع والمنازل.</p>
+                    <p>نشر الطاقة النظيفة في كل ربوع مصر وتوفير حلول اقتصادية مستدامة للمزارع والمصانع والمنازل.</p>
                 </div>
                 <div class="about-card">
                     <i class="fa-solid fa-hand-holding-heart"></i>
@@ -263,7 +273,7 @@
             </div>
             <div class="service-card">
                 <i class="fa-solid fa-house-chimney"></i>
-                <h3>المحطات المنزلية</h3>
+                <h3>حلول الأنظمة</h3>
                 <p>أنظمة On-Grid و Off-Grid لتوفير فاتورة الكهرباء وضمان الاستقلالية.</p>
             </div>
             <div class="service-card">
@@ -306,7 +316,7 @@
                 <p>سنوات خبرة</p>
             </div>
             <div class="stat-item">
-                <h3>+150</h3>
+                <h3>+600</h3>
                 <p>مشروع ناجح</p>
             </div>
             <div class="stat-item">
