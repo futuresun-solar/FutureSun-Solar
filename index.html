@@ -46,10 +46,10 @@
             border-radius: 50px; font-size: 1rem; border: none;
         }
 
-        /* ================= السلايدر (تم تقليل الارتفاع) ================= */
+        /* ================= السلايدر ================= */
         .hero-slider { 
             position: relative; 
-            height: 50vh; /* 🛑 تم التعديل: ارتفاع متوسط ومناسب (كان 95vh) */
+            height: 80vh; /* ارتفاع متوسط ومناسب */
             overflow: hidden; background: #000; direction: ltr; 
         }
         .slide {
@@ -187,11 +187,9 @@
             .nav-links a { font-size: 0.85rem; padding: 5px; }
             .btn-main { display: none; } 
 
-            /* 🛑 تعديل ارتفاع السلايدر للموبايل ليكون أقصر */
-            .hero-slider { height: 50vh; } 
-            
+            .hero-slider { height: 60vh; }
             .slide-content h1 { font-size: 2rem; }
-            .slide-content p { font-size: 1rem; }
+            .slide-content p { font-size: 1.1rem; }
             .prev-btn, .next-btn { display: none; }
 
             .about-grid { grid-template-columns: 1fr; } /* عمود واحد في الموبايل */
@@ -214,15 +212,15 @@
     </header>
 
     <section class="hero-slider">
-        <div class="slide active" style="background-image: url('https://static.vecteezy.com/system/resources/previews/001/235/998/original/solar-panel-cell-on-dramatic-sunset-sky-background-free-photo.jpg');">
+        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1559302504-64aae6ca6b6f?q=80&w=1920');">
             <div class="slide-content">
-                <h1>حلولنا المتكاملة</h1>
+                <h1>حلول "المفتاح" المتكاملة</h1>
                 <p>تعاقد على الموقع كاملاً: أعمال مدنية، توريد طلمبات، ومحطات شمسية.. نحن نتحمل المسؤولية كاملة</p>
                 <a href="projects.html" class="slide-btn">اكتشف خدماتنا</a>
             </div>
         </div>
         
-        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1559302504-64aae6ca6b6f?q=80&w=1920');">
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1566093097221-ac2335b09e70?q=80&w=1920');">
             <div class="slide-content">
                 <h1>ضمان وراحة بال</h1>
                 <p>ضمان سنة كاملة ضد عيوب الصناعة مع توفير بدائل تشغيل فورية أثناء الصيانة</p>
@@ -346,7 +344,7 @@
                     <p>سنوات خبرة</p>
                 </div>
                 <div class="stat-item">
-                    <h3>+150</h3>
+                    <h3>+600</h3>
                     <p>مشروع ناجح</p>
                 </div>
                 <div class="stat-item">
@@ -366,7 +364,7 @@
     </section>
 
     <footer>
-        <p>© 2025 جميع الحقوق محفوظة لشركة شمس المستقبل.</p>
+        <p>© 2025 جميع الحقوق محفوظة لشركة شمس المستقبل للطاقة الشمسية.</p>
     </footer>
 
     <script>
@@ -388,6 +386,7 @@
         }
         autoShowSlides();
     </script>
+
 </body>
 </html>
 
